@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/walmartlabs/json-patchwork.svg?branch=master)](https://travis-ci.org/walmartlabs/json-patchwork)
+
 # API
 This is an implementation of the [JSON Patchwork Specification](#specification-for-implementation).
 
