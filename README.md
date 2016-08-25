@@ -23,7 +23,7 @@ Applies patches from a [Patchwork Object](#patchwork-object) to a target documen
   - [`operations`] *(Array)* Operations to perform on all values for each patch operation a patch definition executes.
 
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 var target = { foo: { bar: 1 } };
 var source = { baz: 2 };
 var patches = [{
@@ -55,7 +55,7 @@ value.
     - `value` *(Object, Array, or Primative)*: The value being modified.
 
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 
 Patchwork.register('custom' function (operation, value) {
   // do something interesting
@@ -71,7 +71,7 @@ value.
 1. `name` *(String)*: The name of the operator.
 
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 
 Patchwork.unregister('custom');
 ```
@@ -88,7 +88,7 @@ Get a value using a patchwork compatible path.
 *(Mixed)*: The value for the path.
 
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 var source = {
   foo: ['bar', 'baz']
 };
@@ -113,7 +113,7 @@ Set a value using a patchwork compatible path.
 *(Object)*: The target object.
 
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 var target = {
   foo: ['bar', 'baz']
 };
@@ -141,7 +141,7 @@ Expand a Patchwork compatible path.
 *(Array)*: The expanded path
 
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 var subject = {
   foo: ['bar', 'baz']
 };
@@ -164,7 +164,7 @@ Split a path; Removes falsy values and ignores escaped path delimiters
 *(Array)*: Path parts.
 
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 var path = '/foo/bar/baz';
 var paths = Patchwork.split(path);
 
@@ -183,7 +183,7 @@ Used to shape patch values. Virtual patches are used to perform patches on a per
 basis.
 
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 var source = {
   foo: [{ id: 1, prop: 'here' }, { id: 2, prop: 'there' }, { id: 3, prop: 'everywhere' }]
 };
@@ -303,7 +303,7 @@ of the patching rules.
 If both the target and source paths are static then the value from the source path is set at the target path.
 
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 var target = {};
 var source = { foo: { bar: 'baz' } };
 var patches = [{
@@ -330,7 +330,7 @@ If the target path is static and the source path is dynamic then source path wil
 will be set at the target path.
 
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 var target = {};
 var source = { foo: [1, 2, 3, 4] };
 var patches = [{
@@ -357,7 +357,7 @@ If the target path is dynamic and source path is static then the value from the 
 expanded target paths.
 
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 var target = { here: [1, 2, 3, 4] };
 var source = { foo: [5, 6, 7, 8] };
 var patches = [{
@@ -385,7 +385,7 @@ of the source will be set at each expanded target path.
 
 ##### Intersection
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 var target = { foo: [1, 2, 3, 4] };
 var source = { foo: [5, 6, 7, 8, 9] };
 var patches = [{
@@ -415,7 +415,7 @@ Patch modifiers describe how patch values should be applied in addition to the r
 If `merge` is `true` the source value is merged into the target value.
 
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 var target = { foo: [1, 2] };
 var source = { bar: [5, 6] };
 var patches = [{
@@ -443,7 +443,7 @@ If `collect` is `true` then values are "collected" instead of being replaced.
 
 ##### Array Example
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 var target = { foo: [1, 2] };
 var source = { bar: [5, 6] };
 
@@ -471,7 +471,7 @@ Patchwork.patch(target, source, patches);
 Collected objects are transformed into array like objects.
 
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 var target = {};
 var source = { foo: 1, bar: 2, baz: 3 };
 
@@ -500,7 +500,7 @@ The depth modifier specifies a distance to traverse up the source object graph p
 the target path when the patch operation is applied. Depth must be a negative number.
 
 ```javascript
-var Patchwork = require('@walmart/patchwork-json');
+var Patchwork = require('json-patchwork');
 var target = { foo: { bar: [], baz: [] } };
 var source = { foo: { bar: [ [ { here: 1 } ] ], baz: [ [ { there: 2 } ] ] } };
 var patches = [{
