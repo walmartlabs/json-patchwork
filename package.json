@@ -1,0 +1,41 @@
+{
+  "name": "json-patchwork",
+  "contributors": [
+    "Seth Benjamin <sbenjamin@walmartlabs.com>",
+    "Maxime Najim <mnajim@walmartlabs.com>",
+    "Jason Strimpel <jstrimpel@walmartlabs.com>"
+  ],
+  "version": "1.0.0",
+  "description": "Implementation of JSON Patchwork, which defines a JSON document structure for expressing a sequence of value patching operations to apply from a source JSON document to a target JSON document.",
+  "keywords": [
+    "JSON patch",
+    "JSON",
+    "patch",
+    "configuration"
+  ],
+  "license": "Apache 2.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/walmartlabs/json-patchwork"
+  },
+  "bugs": {
+    "url": "https://github.com/walmartlabs/json-patchwork/issues"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "istanbul test _mocha -- -R spec --recursive ./test",
+    "test-specs": "istanbul test _mocha -- -R spec --recursive ./test/specs",
+    "test-functional": "istanbul test _mocha -- -R spec --recursive ./test/functional",
+    "cover": "npm test --coverage"
+  },
+  "dependencies": {
+    "lodash": "^4.12.0"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.3",
+    "chai": "^3.5.0",
+    "eslint": "^2.11.1",
+    "mocha": "^2.4.5"
+  }
+}
