@@ -43,6 +43,40 @@ describe('operations/shape.js', function() {
     });
   });
 
+  it('should shape an object with defaults with single token', function() {
+    var result = shape({
+      type: 'shape',
+      shape: {
+        qix: {
+          qux: ['/foo/bar/baz', '<%/foo/bar%>']
+        }
+      }
+    }, source);
+
+    expect(result).to.deep.equal({
+      qix: {
+        qux: 1
+      }
+    });
+  });
+
+  it('should shape an object with defaults with multiple tokens', function() {
+    var result = shape({
+      type: 'shape',
+      shape: {
+        qix: {
+          qux: ['/foo/bar/baz', 'test:<%/foo/bar%>:<%/foo/baz%>']
+        }
+      }
+    }, source);
+
+    expect(result).to.deep.equal({
+      qix: {
+        qux: 'test:1:2'
+      }
+    });
+  });
+
   it('should shape an object with source value reference', function() {
     var result = shape({
       type: 'shape',

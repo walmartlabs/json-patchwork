@@ -1,6 +1,7 @@
 var _ = require('../common');
 var expand = require('../path/expand');
 var Patchwork = require('../index');
+var token = require('./token');
 
 module.exports = shape;
 
@@ -34,7 +35,7 @@ function shape(operation, source, virtual) {
 
   if (_.isArray(shapeObj)) {
     path = shapeObj[0];
-    def = shapeObj[1];
+    def = token.replace(shapeObj[1], source);
   } else {
     path = shapeObj;
   }
