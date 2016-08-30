@@ -55,7 +55,7 @@ describe('operations/shape.js', function() {
 
     expect(result).to.deep.equal({
       qix: {
-        qux: 1
+        qux: '1'
       }
     });
   });
@@ -65,14 +65,17 @@ describe('operations/shape.js', function() {
       type: 'shape',
       shape: {
         qix: {
-          qux: ['/foo/bar/baz', 'test:<%/foo/bar%>:<%/foo/baz%>']
+          qux1: ['/foo/bar/baz', 'test:<%/foo/bar%>:<%/foo/baz%>'],
+          qux2: ['/foo/bar/baz', '<%/foo/bar%>:<%/foo/baz%>']
+
         }
       }
     }, source);
 
     expect(result).to.deep.equal({
       qix: {
-        qux: 'test:1:2'
+        qux1: 'test:1:2',
+        qux2: '1:2'
       }
     });
   });

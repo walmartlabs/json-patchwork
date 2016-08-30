@@ -5,7 +5,7 @@ var split = require('../path/split');
 exports.replace = replace;
 
 /** @type {RegExp} */
-var TOKEN_EXP = /<%([^%>]*)%>/;
+var TOKEN_EXP = /<%([^%>]*)%>/g;
 
 /**
  * Replace tokens
@@ -18,20 +18,13 @@ function replace(input, source) {
 
   if (_.isString(output)) {
     var tokenMatch = ~output.indexOf('<%') &&
-      ~output.indexOf('%>') &&
-      TOKEN_EXP.exec(output);
+        ~output.indexOf('%>') &&
+        TOKEN_EXP.test(output);
 
     if (tokenMatch) {
-      if (tokenMatch.index === 0) {
-        var tokenPath = _.trim(tokenMatch[1]);
-        var sourcePath = split(tokenPath);
-
-        output = _.get(source, sourcePath, null);
-      } else {
-        output = output.replace(new RegExp(TOKEN_EXP.source, 'g'), function(match, token) {
-          return _.get(source, split(_.trim(token)), '');
-        });
-      }
+      output = output.replace(TOKEN_EXP, function(match, token) {
+        return _.get(source, split(_.trim(token)), '');
+      });
     }
   }
 
