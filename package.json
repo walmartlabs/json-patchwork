@@ -5,7 +5,7 @@
     "Maxime Najim <mnajim@walmartlabs.com>",
     "Jason Strimpel <jstrimpel@walmartlabs.com>"
   ],
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Implementation of JSON Patchwork, which defines a JSON document structure for expressing a sequence of value patching operations to apply from a source JSON document to a target JSON document.",
   "keywords": [
     "JSON patch",
