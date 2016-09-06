@@ -19,7 +19,7 @@ function shape(operation, source, virtual) {
 
   if (_.isPlainObject(shapeObj)) {
     return _.mapValues(shapeObj, function(value) {
-      return shape(_.extend({}, value, {
+      return shape(_.extend({}, shapeObj, {
         shape: value
       }), source, virtual);
     });
