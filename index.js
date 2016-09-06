@@ -45,7 +45,12 @@ function patch(target, source, patches, log) {
 
   for (var patchIdx = 0; patchIdx < patches.length; patchIdx++) {
     // Globals
-    var patch = patches[patchIdx];
+    var patch = Object.assign({}, {
+      source: {},
+      target: {},
+      operations: []
+    }, patches[patchIdx]);
+
     var merge = patch.merge;
     var depth = _.toInt(patch.depth, 0);
     var collect = patch.collect;
