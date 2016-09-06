@@ -12,6 +12,10 @@ module.exports = expand;
  * @returns {(String|Array)}
  */
 function expand(subject, path, strict, asArray) {
+  if (path === undefined) {
+    return [];
+  }
+
   var expanded = [];
   var parts = split(path);
   var expandedIdx, keyIdx, expIdx, keys;

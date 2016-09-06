@@ -51,6 +51,7 @@ function patch(target, source, patches, log) {
     var collect = patch.collect;
     var unique = patch.unique;
     var operations = patch.operations;
+    var targetAsSource = patch.targetAsSource;
 
     // Source
     var unresolvedSourcePath = patch.source.path;
@@ -76,7 +77,7 @@ function patch(target, source, patches, log) {
         return targetValue;
       }
 
-      var newValue = sourceValue;
+      var newValue = targetAsSource ? targetValue : sourceValue;
 
       if (_.isArray(operations)) {
         for (var operationIdx = 0; operationIdx < operations.length; operationIdx++) {
@@ -145,7 +146,7 @@ function patch(target, source, patches, log) {
       return newValue;
     };
 
-    for (var sourcePathIdx = 0; sourcePathIdx < sourcePaths.length; sourcePathIdx++) {
+    for (var sourcePathIdx = 0, sourceLen = targetAsSource ? 1 : sourcePaths.length; sourcePathIdx < sourceLen; sourcePathIdx++) {
       var sourcePath = sourcePaths[sourcePathIdx];
       var sourceValue = sourcePath === undefined ? source : _.get(source, sourcePath);
 
