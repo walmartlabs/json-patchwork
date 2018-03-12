@@ -608,19 +608,20 @@ This is not a final draft. The list is limited to the required use cases upon sp
 
 Wrapping the above test operators in parens () will compare the same path in the source and target. 
 Example:
-```
+```javascript
 {
-        "target": {
-          "path": "/path/@"
-        },
-        "source": {
-          "path": "/path/@",
-          "tests": [
-            {
-              "path": "/path/@/target",
-              "operator": "(==)",
-              "value": "/path/@/path/target/"
-            }
-          ]
-        }
+  "target": {
+    "path": "/path/@"
+  },
+  "source": {
+    "path": "/path/@",
+    "tests": [
+      {
+        "path": "/path/@/target",
+        "operator": "(==)",
+        "value": "/path/@/path/target/"
+      }
+    ]
+  }
+}
 ```
