@@ -605,3 +605,22 @@ This is not a final draft. The list is limited to the required use cases upon sp
 * '!~': negated regular expression
 *  'in': in an array or object
 * 'notIn' not in an array or object
+
+Wrapping the above test operators in parens () will compare the same path in the source and target. 
+Example:
+```
+{
+        "target": {
+          "path": "/path/@"
+        },
+        "source": {
+          "path": "/path/@",
+          "tests": [
+            {
+              "path": "/path/@/target",
+              "operator": "(==)",
+              "value": "/path/@/path/target/"
+            }
+          ]
+        }
+```
