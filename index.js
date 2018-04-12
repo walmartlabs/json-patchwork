@@ -36,7 +36,7 @@ exports.testPath = testPath;
  * @param {Array} log Array to push entries into.
  * @returns {Object}
  */
-function patch(target, source, patches, log) {
+function patch(target, source, patches, log, ctx) {
   var dirty = false;
 
   if (!_.isArray(patches)) {
@@ -86,7 +86,7 @@ function patch(target, source, patches, log) {
 
       if (_.isArray(operations)) {
         for (var operationIdx = 0; operationIdx < operations.length; operationIdx++) {
-          newValue = Operations.execute(operations[operationIdx], newValue);
+          newValue = Operations.execute(operations[operationIdx], newValue, ctx);
         }
       }
 

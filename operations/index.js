@@ -31,7 +31,7 @@ var registry = {
  * @param {Object} input An object to operator on.
  * @returns {Object}
  */
-function execute(operation, input) {
+function execute(operation, input, ctx) {
   var type = formatType(operation.type);
   var fn;
 
@@ -43,7 +43,7 @@ function execute(operation, input) {
     throw new PatchworkError('Operator [' + type + '] is not registered.');
   }
 
-  return fn(operation, input);
+  return fn(operation, input, ctx);
 }
 
 /**
