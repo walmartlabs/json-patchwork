@@ -12,7 +12,7 @@ module.exports = shape;
  * @param {Object} virtual Virtual fields.
  * @returns {Object}
  */
-function shape(operation, source, virtual) {
+function shape(operation, source, ctx, virtual) {
   virtual = virtual || operation.virtual && patchVirtual(source, operation.virtual);
 
   var shapeObj = operation.shape;
@@ -21,7 +21,7 @@ function shape(operation, source, virtual) {
     return _.mapValues(shapeObj, function(value) {
       return shape(_.extend({}, shapeObj, {
         shape: value
-      }), source, virtual);
+      }), source, ctx, virtual);
     });
   }
 
